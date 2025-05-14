@@ -1,14 +1,15 @@
 <x-app-layout>
 
-    <h1>Dia de la cita {{ $dia }}</h1>
-
     <p>Seleccione la hora de la cita:</p>
     <div class="flex flex-col">
-
-        @foreach ($horarios as $hora)
+        <div class="flex">
+            @foreach ($horarios as $hora)
             <form action="" method="post" class="mb-2">
-                <p>{{ $hora }}</p>
+                <a href="{{route('citas.confirmacion', [$dia, $hora ])}}">
+                    <p class="ml-2 border border-gray-300 p-2 text-center">{{ $hora }}</p>
+                </a>
             </form>
-        @endforeach
+            @endforeach
+        </div>
     </div>
 </x-app-layout>

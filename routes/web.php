@@ -21,5 +21,6 @@ Route::middleware('auth')->group(function () {
 Route::resource('citas', CitaController::class);
 
 Route::get('/citas/horas/{dia}', [CitaController::class, 'horas'])->name('citas.horas');
+Route::get('/citas/horas/{dia}/{hora}', [CitaController::class, 'confirmacion'])->name('citas.confirmacion');
 
 require __DIR__.'/auth.php';
