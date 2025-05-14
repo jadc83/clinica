@@ -40,6 +40,8 @@ class CitaController extends Controller
 
     public function confirmacion($dia, $hora)
     {
+        Carbon::setLocale('es');
+
         return view('citas.confirmacion', ['dia' => $dia, 'hora' => $hora]);
     }
 

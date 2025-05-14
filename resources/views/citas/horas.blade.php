@@ -5,7 +5,7 @@
         <div class="flex">
             @foreach ($horarios as $hora)
             <form action="" method="post" class="mb-2">
-                <a href="{{route('citas.confirmacion', [$dia, $hora ])}}">
+                <a href="{{route('citas.confirmacion', [ $dia, $hora ] )}}">
                     <p class="ml-2 border border-gray-300 p-2 text-center">{{ $hora }}</p>
                 </a>
             </form>
