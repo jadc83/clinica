@@ -1,12 +1,14 @@
 <x-app-layout>
     <div class="grid grid-cols-7 gap-1">
-        @foreach ($mes as $dia)
+        @foreach ($fechas as $fecha)
 
-            @if ($dia->format('l') != 'Saturday' && $dia->format('l') != 'Sunday')
                 <div class="border border-gray-300 p-2 text-center">
-                    {{ $dia->format('d/m/Y') }}
+                    <a href="{{route('citas.horas', $fecha)}}">
+                        {{ $fecha }}
+                    </a>
                 </div>
-            @endif
+
+
 
         @endforeach
     </div>

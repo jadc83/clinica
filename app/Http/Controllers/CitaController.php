@@ -15,11 +15,33 @@ class CitaController extends Controller
      */
     public function index()
     {
+        Carbon::setLocale('es');
+
         $citas = Auth::user()->citas;
+
         $primero = Carbon::now()->startOfMonth();
         $ultimo = Carbon::now()->endOfMonth();
         $mes = CarbonPeriod::create($primero, $ultimo);
-        return view('citas.index', ['citas' => $citas, 'mes' => $mes]);
+        $mes = $mes->toArray();
+
+        $fechas = array_map(function($fecha) {
+            return $fecha->format('Y-m-d');
+        }, $mes);
+
+        return view('citas.index', ['citas' => $citas, 'mes' => $mes, 'fechas' => $fechas]);
+    }
+
+    public function horas($dia)
+    {
+        $horarios = [];
+        $inicio = Carbon::createFromTime(9, 0, 0);
+
+        for ($i = 0; $i < 5; $i++) {
+            $horario = $inicio->copy()->addHours($i)->format('H:i');
+            $horarios[] = $horario;
+        }
+
+        return view('citas.horas', ['dia' => $dia, 'horarios' => $horarios]);
     }
 
     /**
